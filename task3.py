@@ -8,9 +8,9 @@ def preorder_traversal(root):
     sum = 0
     if root:
         sum = sum + root.val
-        print(root.val)
-        preorder_traversal(root.left)
-        preorder_traversal(root.right)
+        print("Значення =", root.val)
+        sum = sum + preorder_traversal(root.left)
+        sum = sum + preorder_traversal(root.right)
     return sum
 
 # Створення дерева
@@ -19,6 +19,8 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
+root.left.right.right = Node(6)
+root.right.left = Node(8)
+root.right.right = Node(9)
 
-print("Прямий обхід:")
-print(preorder_traversal(root))
+print("Сума значень =", preorder_traversal(root))
