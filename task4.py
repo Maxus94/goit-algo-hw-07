@@ -12,13 +12,13 @@ class Comment:
         self.is_deleted = True
         self.comment = "Цей коментар було видалено."
 
-    def display(self):        
+    def display(self, level = 0):        
         if len(self.comments) == 0:
-            print(self.author + ": " + self.comment if not self.is_deleted else self.comment) 
+            print(level * "    " + self.author + ": " + self.comment if not self.is_deleted else level * "    " + self.comment) 
         else:        
-            print(self.author + ": " + self.comment if not self.is_deleted else self.comment)
+            print(level * "    " + self.author + ": " + self.comment if not self.is_deleted else level * "    " + self.comment)
             for item in self.comments:
-                item.display()
+                item.display(level + 1)
 
     
 
